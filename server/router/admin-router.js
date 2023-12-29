@@ -11,7 +11,7 @@ const path = require("path")
 // Set up Multer for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/router/uploads');
+        cb(null, 'uploads');
     },
     filename: function (req, file, cb) {
         console.log(req.file);
@@ -24,9 +24,6 @@ const upload = multer({ storage: storage }).single('food_image');
 router.route("/user").get(adminUser)
 router.route("/contact").get(adminContact)
 router.route("/reservation").get(adminReservation)
-router.route("/addMenu").post((req, res) => {
-    console.log("abcd");
-    console.log(req);
-})
+router.route("/addMenu").post(upload, addMenuController.postMenu)
 
 module.exports = router

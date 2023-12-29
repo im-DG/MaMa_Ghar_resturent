@@ -14,7 +14,7 @@ const path = require("path")
 // for cors
 
 const corsOptions = {
-    origin: 'http://localhost:5173/',
+    origin: '*',
     methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
     credential: true,
 }
