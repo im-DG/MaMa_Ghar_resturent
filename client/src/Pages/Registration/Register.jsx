@@ -26,7 +26,7 @@ const Register = () => {
         e.preventDefault()
         // console.log(user);
         try {
-            const response = await fetch(`http://localhost:2024/api/auth/register`, {
+            const response = await fetch(`https://mamaghar.netlify.app/api/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const Register = () => {
                     phone: "",
                     password: "",
                 })
-                navigate('/login')
+                navigate('/')
             }
             else {
                 toast.error(res_data.msg)

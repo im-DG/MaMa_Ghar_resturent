@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const Login = () => {
 
     const navigate = useNavigate()
-    const { storeTokenInLS } = useAuth()
+    const { storeTokenInLS, userlogin } = useAuth()
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -20,7 +20,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:2024/api/auth/login`, {
+            const response = await fetch(`https://mamaghar.netlify.app/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -31,16 +31,20 @@ const Login = () => {
 
             const res_data = await response.json()
             console.log("res from data", res_data);
+
             // console.log(response);
             if (response.ok) {
-
                 // for token
                 storeTokenInLS(res_data.token)
                 setUser({
                     email: "",
                     password: "",
                 })
-                navigate("/") //For home page redirect.
+                {
+                    userlogin.isAdmin ? navigate("/admin") :
+
+                        navigate("/")//For home page redirect.
+                }
                 toast.success('Login Successfull')
             }
             else {

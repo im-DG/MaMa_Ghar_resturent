@@ -1,12 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-
 export const AuthContext = createContext();
 
 
 export const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem('token'));
-    const [user, setUser] = useState('');
+    const [userlogin, setUserlogin] = useState('');
 
     const [menu, setMenu] = useState("")
     const [adminuser, setAdminuser] = useState("")
@@ -35,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     const userAuthentication = async () => {
         try {
-            const response = await fetch("http://localhost:2024/api/auth/user", {
+            const response = await fetch("https://mamaghar.netlify.app/api/auth/user", {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -44,8 +43,11 @@ export const AuthProvider = ({ children }) => {
             if (response.ok) {
                 const data = await response.json();
                 console.log('data', data.userData);
-                setUser(data.userData);
+                setUserlogin(data.userData);
+                // user.isAdmin
+                // console.log(user);
             }
+
         } catch (error) {
             console.log('during loggedIn receing data error ', error);
         }
@@ -56,7 +58,7 @@ export const AuthProvider = ({ children }) => {
 
     const getMenu = async () => {
         try {
-            const response = await fetch("http://localhost:2024/api/data/menu", {
+            const response = await fetch("https://mamaghar.netlify.app/api/data/menu", {
                 method: "GET",
             })
             if (response.ok) {
@@ -72,7 +74,7 @@ export const AuthProvider = ({ children }) => {
     // --------------------------------for admin user getting----------------
     const getUserToAdmin = async () => {
         try {
-            const response = await fetch("http://localhost:2024/api/admin/user", {
+            const response = await fetch("https://mamaghar.netlify.app/api/admin/user", {
                 method: "GET",
             })
             if (response.ok) {
@@ -89,7 +91,7 @@ export const AuthProvider = ({ children }) => {
     // ----------------------------------for admin contact getting----------
     const getContactToAdmin = async () => {
         try {
-            const response = await fetch("http://localhost:2024/api/admin/contact", {
+            const response = await fetch("https://mamaghar.netlify.app/api/admin/contact", {
                 method: "GET",
 
             })
@@ -107,7 +109,7 @@ export const AuthProvider = ({ children }) => {
 
         try {
 
-            const response = await fetch('http://localhost:2024/api/admin/reservation', {
+            const response = await fetch('https://mamaghar.netlify.app/api/admin/reservation', {
                 method: "GET",
             })
             if (response.ok) {
@@ -132,7 +134,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ isLoggedIn, storeTokenInLS, LogoutUser, user, menu, adminuser, adminContact, adminReservation }}>
+            value={{ isLoggedIn, storeTokenInLS, LogoutUser, userlogin, menu, adminuser, adminContact, adminReservation }}>
             {children}
         </AuthContext.Provider>
     );

@@ -11,13 +11,13 @@ const Contact = () => {
     });
 
 
-    const { user } = useAuth()
+    const { userlogin } = useAuth()
 
     const [userData, setUserData] = useState(true)
-    if (userData && user) {
+    if (userData && userlogin) {
         setContact({
-            email: user.email,
-            phone: user.phone,
+            email: userlogin.email,
+            phone: userlogin.phone,
             message: ""
         })
         setUserData(false)
@@ -33,7 +33,7 @@ const Contact = () => {
         e.preventDefault();
         // console.log(user);
         try {
-            const response = await fetch(`http://localhost:2024/api/form/contact`, {
+            const response = await fetch(`https://mamaghar.netlify.app/api/form/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

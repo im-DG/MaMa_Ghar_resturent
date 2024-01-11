@@ -19,18 +19,20 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="*" element={<Error />} />
+          {/* ------------------------- */}
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/menu" element={<Menu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="*" element={<Error />} />
 
-          {/* --------------------------------------------------- */}
+          {/* -------------------------------------------------- */}
 
           {/* for Admin pannel route */}
           <Route path="/admin" element={<Admin />} />
@@ -38,8 +40,6 @@ const App = () => {
           <Route path="/admin/contacts" element={<Admin_Contact />} />
           <Route path="/admin/reservations" element={<Admin_Reservation />} />
           <Route path="/admin/addmenus" element={<AddMenu />} />
-
-
         </Routes>
       </BrowserRouter>
     </>

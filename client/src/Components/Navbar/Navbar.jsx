@@ -28,7 +28,7 @@ const Navbar = () => {
                     toggle ?
                         <MdClose onClick={() => setToggle(!toggle)} className='text-xl md:hidden block' />
                         :
-                        <MdMenu onClick={() => setToggle(!toggle)} className='text-xl md:hidden block' />
+                        <MdMenu onClick={() => setToggle(!toggle)} className='text-xl md:hidden block ' />
                 }
 
                 <ul className='md:flex hidden justify-between gap-7'>

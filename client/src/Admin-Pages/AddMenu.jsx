@@ -33,7 +33,7 @@ const AddMenu = () => {
             formData.append('food_image', image);
 
 
-            await axios.post('http://localhost:2024/api/admin/addMenu', formData, {
+            await axios.post('https://mamaghar.netlify.app/api/admin/addMenu', formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
