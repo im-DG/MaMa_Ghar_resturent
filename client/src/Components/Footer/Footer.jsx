@@ -52,7 +52,7 @@ const Footer = () => {
                     <div className="md:w-[33.33%] w-[100%] flex flex-col ml-[2rem]">
                         <h1 className="text-2xl font-bold font-serif my-10">Meet Owner</h1>
                         <h2 className='text-gray-400 font-medium mb-3'>Abiral Mahata(Owner)</h2>
-                        <img className='w-[18rem] mt-4' src="..\public\photos\abiral.jpg" alt="owner" />
+                        <img className='w-[18rem] mt-4' src="../photos/abiral.jpg" alt="owner" />
 
                     </div>
 
